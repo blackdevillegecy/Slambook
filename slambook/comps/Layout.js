@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 
-const Layout = ({children}) => {
+const Layout = ({href, children}) => {
     return ( 
         <div>
             <Navbar />
