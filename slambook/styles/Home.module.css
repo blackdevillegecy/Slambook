@@ -2,19 +2,29 @@
   display: flex;
   padding: 1vh;
   font-size: large;
+  width: fit-content;
+  margin: auto;
 }
 
 .input {
   border: 0px;
-  border-radius: 3px;
+  border-bottom: 1.5px solid black;
   margin-left: 2vw;
   height: 5vh;
-  width: 15vw;
+  width: 25vw;
   font-size: large;
+  background-color: transparent;
+}
+
+.input:focus {
+  outline: 0px;
+
 }
 
 .headings {
   padding: 0.8vh 1.2vw;
   border-radius: 3px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background-color: transparent;
+
 }
