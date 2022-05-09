@@ -58,7 +58,7 @@
     {
         "id":"9",
         "name":"Student's Name",
-        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcNpzvANaIg2sIFU6OBY_SzXy0KMSEXrgL-Q&usqp=CAU",
+        "image":"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         "branch":"B.tech 2018, CSE",
         "year":""
     },
@@ -212,7 +212,7 @@
     {
         "id":"31",
         "name":"Name Of Student",
-        "image":"https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "image":"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         "branch":"B.tech 2018, CSE",
         "year":""
     }

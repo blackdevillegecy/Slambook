@@ -31,7 +31,8 @@ const Conatiner = styled.div`
 const Text = styled.p``;
 
 const Image = styled.img`
-  max-width: 198px;
+  max-width: 170px;
+  min-height: 170px;
   margin: 0px auto;
   max-height: 170px;
 `;
