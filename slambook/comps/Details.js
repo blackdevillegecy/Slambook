@@ -5,6 +5,8 @@ import { stud } from "../pages/CSE_Slider/[student]";
 import { useRouter } from "next/router";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import SendIcon from '@mui/icons-material/Send';
+
 
 const Details = (props) => {
   const router = useRouter();
@@ -42,15 +44,15 @@ const Details = (props) => {
           </Name>
         </Profile>
         <Comment>
-          <div>
+          <Form>
             <Input placeholder="Type your comment here" />
-            <StyledPopup trigger={<Button type="submit">▶</Button>} >
+            <StyledPopup trigger={<Button type="submit"><SendIcon/></Button>} position="top center">
               <div style={{display:"flex", justifyContent:"space-around"}}>
               <button style={{border: '0', borderRadius: '4px', padding: '2px 5px', background: 'transparent'}}>Public</button>
               <button style={{border: '0', borderRadius: '4px', padding: '2px 5px', background: 'transparent'}}>Private</button>
               </div>
             </StyledPopup>
-          </div>
+          </Form>
         </Comment>
         <Branch>
           <h4 style={{ direction: "ltr", textAlign: 'center'}}>{props.branchName}</h4>
@@ -167,23 +169,35 @@ const Comment = styled.div`
   justify-content: flex-end;
   
 `;
+const Form = styled.div`
+border: 3px solid black;
+width: 90%;
+height: 8%;
+border-radius: 10px;
+background-color: white;
+
+`
 const Input = styled.input`
   width: 100%;
   flex: 1;
-  padding: 5px 0px;
+  padding: 5px 5px;
   margin: 0;
   max-width: 600px;
   padding-left: 0.5vw;
+  border: none;
   border-radius: 10px;
   margin-bottom: 7px;
   // border: 1px solid red;
+  &:focus{
+    outline-width: 0px;
+  }
 `;
 const Button = styled.button`
   background: transparent;
-  font-size: 30px;
+  border: none;
+  font-size: 1.5vw;
   padding: 0px;
   margin-left: 4px;
-  border: 1px solid red;
 `;
 
 const StyledPopup = styled(Popup)`
