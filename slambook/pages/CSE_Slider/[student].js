@@ -19,7 +19,7 @@ const student = () => {
           let properties = {
             ...cse,
             branchName :"CSE",
-            json: ME
+            json: CSE
           }
           return (
             <div>

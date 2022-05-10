@@ -44,28 +44,28 @@ const Details = (props) => {
         <Comment>
           <div>
             <Input placeholder="Type your comment here" />
-            <StyledPopup trigger={<Button type="submit">▶</Button>} position="top center">
+            <StyledPopup trigger={<Button type="submit">▶</Button>} >
               <div style={{display:"flex", justifyContent:"space-around"}}>
-              <button>Public</button>
-              <button>Private</button>
+              <button style={{border: '0', borderRadius: '4px', padding: '2px 5px', background: 'transparent'}}>Public</button>
+              <button style={{border: '0', borderRadius: '4px', padding: '2px 5px', background: 'transparent'}}>Private</button>
               </div>
             </StyledPopup>
           </div>
         </Comment>
         <Branch>
-          <h4 style={{ direction: "ltr" }}>{props.branchName}</h4>
+          <h4 style={{ direction: "ltr", textAlign: 'center'}}>{props.branchName}</h4>
           {props.json.filter((query) => stud !== query.id).map((cse) => {
             
             return (
               <>
                 <div
-                  style={{ direction: "ltr" }}
+                  style={{ direction: "ltr", borderTop: '1px solid black'}}
                   onClick={() => router.push(`/${props.branchName}_Slider/${cse.id}`)}
                   key={cse.id}
                 >
-                  <div>
+                  <div style={{display: 'flex'}}>
                     <SmallIMg src={cse.image} alt="" />
-                    {cse.name}
+                    <div style={{margin: '3.5vh 0 0 1vw ', cursor: 'pointer'}}>{cse.name}</div>
                   </div>
                 </div>
               </>
@@ -153,7 +153,9 @@ const SmallIMg = styled.img`
   width: 100%;
   max-width: 50px;
   border-radius: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-left: 2vw;
+  margin-top: 2vh;
 `;
 
 const Comment = styled.div`
@@ -171,15 +173,17 @@ const Input = styled.input`
   padding: 5px 0px;
   margin: 0;
   max-width: 600px;
-
+  padding-left: 0.5vw;
   border-radius: 10px;
+  margin-bottom: 7px;
+  // border: 1px solid red;
 `;
 const Button = styled.button`
   background: transparent;
-  border: none;
-  font-size: 2vw;
+  font-size: 30px;
   padding: 0px;
-  margin: 0;
+  margin-left: 4px;
+  border: 1px solid red;
 `;
 
 const StyledPopup = styled(Popup)`

@@ -29,9 +29,9 @@ const Navbar = () => {
         <div style={{display: 'flex', backgroundColor: 'rgb(174, 229, 248)'}}>
             <Link href="https://iitgoa.ac.in/"><div style={logoCSS}><Image src="/iitgoa_logo.png" width={80} height={80} /></div></Link>
             <div  style={parentLink}>
-                <div className="links" style={linkCSS}>HOME</div>
                 <Link href="/branch"><div className="links" style={linkCSS}>BRANCH</div></Link>
                 <Link href="/"><div className="links" style={linkCSS}>SIGN IN</div></Link>
+                <Link href="/credit"><div className="links" style={linkCSS}>CREDITS</div></Link>
             </div>
         </div>
      );
