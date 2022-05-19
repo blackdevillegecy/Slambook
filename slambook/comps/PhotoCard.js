@@ -25,14 +25,37 @@ const Conatiner = styled.div`
   max-height: 300px;
   margin-bottom: 30px;
   text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 40px 58px -16px,
     rgba(0, 0, 0, 0.62) 0px 30px 22px -10px;
+    @media (max-width: 770px) {
+    margin-left: 20px;
+  }
+  @media (max-width: 550px) {
+    margin-left: 50px;
+  }
+  @media (max-width: 460px) {
+    margin-left: 25px;
+  }
+    @media (max-width: 400px) {
+    margin-left: 5px;
+  }
+  @media (max-width: 300px) {
+    margin-left: 0px;
+    max-width: 195px;
+  }
+  
 `;
-const Text = styled.p``;
+const Text = styled.p`
+
+`;
 
 const Image = styled.img`
   max-width: 170px;
-  min-height: 170px;
-  margin: 0px auto;
-  max-height: 170px;
+  flex: 1 1 120px;
+  aspect-ratio: 1/1;
+  @media (max-width: 300px) {
+    max-width: 165px;
+  }
 `;
