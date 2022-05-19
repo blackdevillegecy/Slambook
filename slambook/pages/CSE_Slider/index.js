@@ -23,11 +23,20 @@ function Slide() {
     rows: 1,
     mobileFirst: true,
     slidesPerRow: 1,
-    slidesToShow: 5,
+    slidesToShow: 7,
     slidesToScroll: 5,
     rows: 2,
     arrows: true,
     responsive: [
+      {
+        breakpoint: 1600,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: true,
+        },
+      },
       {
         breakpoint: 1200,
         settings: {
@@ -53,7 +62,7 @@ function Slide() {
         },
       },
       {
-        breakpoint: 450,
+        breakpoint: 550,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -87,15 +96,12 @@ const Container = styled.div`
   padding: 2rem 8rem;
   padding-bottom: 0rem;
   .slick-prev:before {
-    /* content: "<"; */
-    font-size: 50px;
+    font-size: 30px;
     z-index: 2;
   }
 
   .slick-next:before {
-    /* content: ">"; */
-    position: absolute;
-    font-size: 50px;
+    font-size: 30px;
   }
   .slick-slide > div {
     display: grid;
@@ -109,7 +115,10 @@ const Container = styled.div`
     padding-bottom: 0rem;
   }
   @media (max-width: 600px) {
-    padding: 3rem 3rem;
+    padding: 3rem 4rem;
     padding-bottom: 0rem;
+  }
+  @media (max-width: 350px) {
+    padding: 3rem 2rem;
   }
 `;
