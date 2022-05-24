@@ -1,13 +1,26 @@
 import React, { Component, useContext } from "react";
 import Slider from "react-slick";
 import PhotoCard from "../../comps/PhotoCard";
-import EE from "../../comps/jsons/EE.json";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { stateContext } from "../_app";
 
-function Slide() {
+export const getStaticProps = async()=>{
+  const res = await fetch("https://namam2011.pythonanywhere.com/api/users/EE")
+  const data = await res.json();
+  return {
+    props: {
+      data,
+    }
+  }
+}
+
+function Slide( {data} ) {
+  
   const router = useRouter();
 
   const settings = {
@@ -69,12 +82,12 @@ function Slide() {
   return (
     <Container style={{ background: " rgb(174, 229, 248)" }}>
       <Slider {...settings}>
-        {EE.slice(0)
+        {data.slice(0)
           .reverse()
           .map((ee) => {
             return (
               <div
-                onClick={() => router.push(`/EE_Slider/${ee.id}`)}
+                onClick={() => router.push(`/EE_Slider/${ee.roll}`)}
                 key={ee.id}
               >
                 <PhotoCard {...ee} />
@@ -89,7 +102,7 @@ function Slide() {
 export default Slide;
 
 const Container = styled.div`
-  padding: 2rem 8rem;
+  padding: 1vw 8rem;
   padding-bottom: 0rem;
   .slick-prev:before {
     font-size: 30px;

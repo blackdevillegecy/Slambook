@@ -2,12 +2,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
-import CSE from "./jsons/CSE.json";
 
 const PhotoCard = (props) => {
   return (
     <Conatiner>
-      <Image src={props.image} alt="..." />
+      <Image src={props.image_url} alt="..." />
       <Text>{props.name}</Text>
     </Conatiner>
   );
@@ -20,7 +19,8 @@ const Conatiner = styled.div`
   padding: 15px;
   padding-top: 10px;
   width: 100%;
-  max-width: 200px;
+  max-width: 220px;
+  height: 250px;
   border: 2px solid grey;
   max-height: 300px;
   margin-bottom: 30px;
@@ -52,9 +52,9 @@ const Text = styled.p`
 `;
 
 const Image = styled.img`
-  max-width: 170px;
-  flex: 1 1 120px;
-  aspect-ratio: 1/1;
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
   @media (max-width: 300px) {
     max-width: 165px;
   }

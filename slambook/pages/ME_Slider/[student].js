@@ -1,28 +1,45 @@
 import React from "react";
 import { useRouter } from "next/router";
-
+import PhotoCard from "../../comps/PhotoCard";
 import Details from "../../comps/Details";
 
-import ME from "../../comps/jsons/ME.json";
 
-const student = () => {
+export const getStaticPaths = async () => {
+  const res = await fetch("https://namam2011.pythonanywhere.com/api/users/ME");
+  const data = await res.json();
+  const paths = data.map((students) => {
+    return {
+      params: { student: students.roll.toString() },
+    }})
+  return{
+    paths,
+    fallback: false,
+    }
+  };
+;
+export const getStaticProps = async (i) => {
+  const id = i.params.student;
+  const res = await fetch("https://namam2011.pythonanywhere.com/api/users/ME");
+  const data = await res.json();
+  return {
+    props: { student: data },
+  };
+ 
+};
+
+const student = ({ student }) => {
   const router = useRouter();
   const stud = router.query.student;
 
-
   return (
     <>
-      {ME
-        .filter((me) => stud === me.id.toString())
+    
+      {student
+        .filter((me) => stud === me.roll.toString())
         .map((me) => {
-          let properties = {
-            ...me,
-            branchName : "ME",
-            json : ME
-          }
           return (
             <div>
-              <Details {...properties} />
+              <Details prop = {student} />
             </div>
           );
         })}
