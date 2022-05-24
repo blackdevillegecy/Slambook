@@ -1,6 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
 import styled from "styled-components";
-import CSE from "../comps/jsons/CSE.json";
 import { stud } from "../pages/CSE_Slider/[student]";
 import { useRouter } from "next/router";
 import Popup from "reactjs-popup";
@@ -12,38 +11,35 @@ const Details = (props) => {
   const router = useRouter();
   const stud = router.query.student;
   const [BranchArrow, setBranchArrow] = useState(false)
+  const [width, setWidth] = React.useState(0);
+	  React.useEffect(() => {
+	    setWidth(window.outerWidth);
+	  });
 
   return (
     <>
+    
       <Container style={{ backgroundColor: "rgb(174, 229, 248)" }}>
         <Profile>
-          <Arrow
-            onClick={() => {
-              if (Number(stud) > 1) {
-                router.push(
-                  `/${props.branchName}_Slider/${(Number(stud) - 1).toString()}`
-                );
-              }
-            }}
-          >
-            ⋖
-          </Arrow>
-          <Image src={props.image} alt="" />
-          <Arrow
-            onClick={() => {
-              if (Number(stud) < 31) {
-                router.push(
-                  `/${props.branchName}_Slider/${(Number(stud) + 1).toString()}`
-                );
-              }
-            }}
-          >
-            ⋗
-          </Arrow>
-
+          
+          {props.prop
+            .filter((query) => stud == query.roll.toString())
+            .map((cse) => {
+              return (
+                <div style={{height:"50%"}}>
+          <Image key={cse.roll} src={cse.image_url} alt="" />
+          </div>
+)})}
           <Name>
-            <h3>{props.name}</h3>
-            <h5>{props.branch}</h5>
+          {props.prop
+            .filter((query) => stud == query.roll.toString())
+            .map((cse) => {
+              return (
+                <>
+            <h3 key={cse.roll}>{cse.name}</h3>
+            <h5>{cse.branch}</h5>
+            </>
+            )})}
           </Name>
         </Profile>
         <Comment>
@@ -83,25 +79,24 @@ const Details = (props) => {
           </Form>
         </Comment>
         <BB onClick={()=>setBranchArrow(x => (!x))}><ArrowBackIosNewIcon/></BB>
-        {(BranchArrow||window.outerWidth>780) && <Branch>
+        {(BranchArrow||width>780)&&<Branch>
         
           <h4 style={{ direction: "ltr", textAlign: "center" }}>
             {props.branchName}
           </h4>
-          {props.json
-            .filter((query) => stud !== query.id)
+          {props.prop
+            .filter((query) => stud !== query.roll.toString())
             .map((cse) => {
               return (
                 <>
-                  <div
+                  <div key={cse.roll}
                     style={{ direction: "ltr", borderTop: "1px solid black" }}
                     onClick={() =>
-                      router.push(`/${props.branchName}_Slider/${cse.id}`)
+                      router.push(`/${props.prop[0].branch}_Slider/${cse.roll.toString()}`)
                     }
-                    key={cse.id}
                   >
                     <div style={{ display: "flex" }}>
-                      <SmallIMg src={cse.image} alt="" />
+                      <SmallIMg src={cse.image_url} alt="" />
                       <div
                         style={{ margin: "3.5vh 0 0 1vw ", cursor: "pointer" }}
                       >
@@ -131,17 +126,24 @@ const Container = styled.div`
   }
 `;
 const Profile = styled.div`
-  width: 20%;
-  margin-left: 10px;
+  width: 25%;
   @media (max-width: 770px) {
     display: flex;
     max-height: 100px;
-    width: 100%;
+   width: 55%;
+   margin-left: 20px;
   }
 `;
 const Image = styled.img`
-  min-height: 13vw;
-  max-width: 13vw;
+  min-height: 5vw;
+  object-fit: cover;
+  max-width: 27vw;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
   @media (max-width: 770px) {
     border-radius: 300px;
     min-height: 11vw;
@@ -158,11 +160,7 @@ const Image = styled.img`
     max-width: 20vw;
   }
 `;
-const Arrow = styled.button`
-  background: transparent;
-  border: none;
-  font-size: 3vw;
-`;
+
 const Name = styled.div`
   display: flex;
   flex-direction: column;
@@ -191,7 +189,7 @@ const Name = styled.div`
       margin: auto 35px;
       h3 {
         color: blue;
-        font-size: 4.5vw;
+        font-size: 4vw;
         margin-bottom: 3px;
       }
       h5 {
@@ -269,11 +267,13 @@ const Branch = styled.div`
     max-height: 400px;
     min-height: 0px;
     min-width: 220px;
+    font-size: .8rem;
   }
 `;
 const SmallIMg = styled.img`
   width: 100%;
   max-width: 50px;
+  aspect-ratio: 1/1;
   border-radius: 100px;
   margin-bottom: 10px;
   margin-left: 2vw;
